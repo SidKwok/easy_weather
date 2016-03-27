@@ -31,12 +31,18 @@
         var a = document.createElement("a");
         a.id = "ew";
         a.href = "#";
+        var adiv = document.createElement("div");
+        adiv.innerHTML = "EW";
+        a.appendChild(adiv);
         document.body.appendChild(a);
 
         var div = document.createElement("div");
         div.id = "ew-info";
+        var img = document.createElement("div");
+        img.id = "ew-img";
         var p = document.createElement("p");
         var h1 = document.createElement("h1");
+        div.appendChild(img);
         div.appendChild(h1);
         div.appendChild(p);
         document.body.appendChild(div);
@@ -45,22 +51,70 @@
         var style = document.createElement('style');
         style.innerHTML = "#ew{" +
                           "display: block;" +
-                          "background: #EF4566;" +
+                          "background: #3eaca8;" +
                           "width:60px;height:60px;" +
                           "-webkit-border-radius: 120px;" +
                           "-moz-border-radius: 120px;" +
+                          "border-radius: 160px;" +
                           "bottom:10px;left:10px;" +
                           "position: fixed;" +
-                          "border-radius: 120px;}" +
+                          "text-decoration: none;" +
+                          "color: #E5EEC1;" +
+                          "text-align: center;" +
+                          "transition:1s;" +
+                          "}" +
+                          "#ew div{" +
+                          "margin-top: 23px;" +
+                          "}" +
+                          "#ew:hover{" +
+                          "background: #547a82;" +
+                          "transition:1s;" +
+                          "}" +
                           "#ew-info{" +
-                          "background: #83ae9b;" +
+                          "background: #2C2A36;" +
                           "box-shadow: 0 0 10px #ccc;" +
-                          "height:140px;width:140px;" +
+                          "height:240px;width:240px;" +
                           "-webkit-border-radius: 2px;" +
                           "-moz-border-radius: 2px;" +
                           "bottom:10px;left:80px;" +
                           "position: fixed;" +
-                          "border-radius: 2px;}";
+                          "border-radius: 8px;" +
+                          "padding: 5px;" +
+                          "color: #E5EEC1;" +
+                          "}" +
+                          "#ew-info h1{" +
+                          "font-size: 56px;" +
+                          "font-weight: 300;" +
+                          "margin-bottom: 0px;" +
+                          "position: absolute;" +
+                          "left: 15px;" +
+                          "bottom:50px;" +
+                          "}" +
+                          "#ew-info p{" +
+                          "font-size: 24px;" +
+                          "position: absolute;" +
+                          "bottom: 0;" +
+                          "left: 20px;" +
+                          "margin-top: 0px;" +
+                          "}" +
+                          "#ew-img{" +
+                          "width:130px;height: 130px;" +
+                          "background-image: url('./icon.gif');" +
+                          "background-size: 100%;" +
+                          "background-attachment: fixed;" +
+                          "background-repeat: no-repeat;" +
+                          // "background-position: 80px 370px;" + //晴天
+                          // "background-position: -90px 370px;" + //雨天
+                          // "background-position: -260px 370px;" + //雷雨天
+                          // "background-position: -430px 370px;" + //阴夜天
+                          // "background-position: 80px 173px;" + //风天
+                          // "background-position: -90px 173px;" + //阴天
+                          // "background-position: -260px 173px;" + //雾天
+                          // "background-position: -430px 173px;" + //雪天
+                          "background-position: 80px 370px;" +
+                          "float: right;" +
+                          "right: 15px;" +
+                          "}";
         head.appendChild(style);
         var ew = document.getElementById('ew');
         var ewinfo = document.getElementById('ew-info');
@@ -74,8 +128,25 @@
               if(xhr.readyState == 4){
                 if((xhr.status >= 200 && xhr.status <300) || xhr.status == 304){
                   tempdata = JSON.parse(xhr.responseText).data;
-                  ewinfo.childNodes[0].innerHTML = tempdata.wendu;
-                  ewinfo.childNodes[1].innerHTML = city;
+                  var type = tempdata.forecast[0].type;
+                  var ewimg = document.getElementById("ew-img");
+                  switch (type) {
+                    case "晴":
+                      ewimg.style.backgroundPosition = "80px 370px";
+                      break;
+                    case "多云":
+                    case "阴":
+                      ewimg.style.backgroundPosition = "-90px 173px";
+                      break;
+                    case "小雨":
+                    case "阵雨":
+                      ewimg.style.backgroundPosition = "-90px 370px";
+                      break;
+                    default:
+                      ewimg.style.backgroundPosition = "80px 370px";
+                  }
+                  ewinfo.childNodes[1].innerHTML = tempdata.wendu + "&#176";
+                  ewinfo.childNodes[2].innerHTML = city;
                 }
               }
             };
