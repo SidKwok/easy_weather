@@ -1,5 +1,3 @@
-//
-// // find your ip address
 (function(){
   var url;
   var city;
@@ -13,8 +11,8 @@
         head.removeChild(script);
         remote_ip_info = null;
       };
-      script.src= 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=';
-      head.appendChild(script);
+    script.src= 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js&ip=';
+    head.appendChild(script);
     })();
 
     var Util = {
@@ -103,14 +101,6 @@
                           "background-size: 100%;" +
                           "background-attachment: fixed;" +
                           "background-repeat: no-repeat;" +
-                          // "background-position: 80px 370px;" + //晴天
-                          // "background-position: -90px 370px;" + //雨天
-                          // "background-position: -260px 370px;" + //雷雨天
-                          // "background-position: -430px 370px;" + //阴夜天
-                          // "background-position: 80px 173px;" + //风天
-                          // "background-position: -90px 173px;" + //阴天
-                          // "background-position: -260px 173px;" + //雾天
-                          // "background-position: -430px 173px;" + //雪天
                           "background-position: 80px 370px;" +
                           "float: right;" +
                           "right: 15px;" +
