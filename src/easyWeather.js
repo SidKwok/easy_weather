@@ -50,6 +50,7 @@
                           "display: table;" +
                           "background: #3eaca8;" +
                           "width:60px;height:60px;" +
+                          "box-shadow: 0 0 10px #ccc;" +
                           "-webkit-border-radius: 120px;" +
                           "-moz-border-radius: 120px;" +
                           "border-radius: 160px;" +
