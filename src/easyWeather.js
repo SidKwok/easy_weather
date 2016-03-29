@@ -26,13 +26,12 @@
         }
       },
       createEW: function(){
-        var a = document.createElement("a");
-        a.id = "ew";
-        a.href = "#";
-        var adiv = document.createElement("div");
-        adiv.innerHTML = "EW";
-        a.appendChild(adiv);
-        document.body.appendChild(a);
+        var ewdiv = document.createElement("div");
+        ewdiv.id = "ew";
+        var indiv = document.createElement("div");
+        indiv.innerHTML = "EW";
+        ewdiv.appendChild(indiv);
+        document.body.appendChild(ewdiv);
 
         var div = document.createElement("div");
         div.id = "ew-info";
@@ -48,7 +47,7 @@
         var head = document.getElementsByTagName('head')[0];
         var style = document.createElement('style');
         style.innerHTML = "#ew{" +
-                          "display: block;" +
+                          "display: table;" +
                           "background: #3eaca8;" +
                           "width:60px;height:60px;" +
                           "-webkit-border-radius: 120px;" +
@@ -59,10 +58,13 @@
                           "text-decoration: none;" +
                           "color: #E5EEC1;" +
                           "text-align: center;" +
+                          "cursor: pointer;" +
                           "transition:1s;" +
                           "}" +
                           "#ew div{" +
-                          "margin-top: 23px;" +
+                          "width:36px;height:18px;" +
+                          "display: table-cell;" +
+                          "vertical-align: middle;" +
                           "}" +
                           "#ew:hover{" +
                           "background: #547a82;" +
@@ -98,12 +100,13 @@
                           "#ew-img{" +
                           "width:130px;height: 130px;" +
                           "background-image: url('./icon.gif');" +
-                          "background-size: 100%;" +
+                          "background-size: 65%;" +
                           "background-attachment: fixed;" +
                           "background-repeat: no-repeat;" +
-                          "background-position: 80px 370px;" +
+                          "background-position: 60px 40px;" +
                           "float: right;" +
                           "right: 15px;" +
+                          "position: absolute;" +
                           "}";
         head.appendChild(style);
         var ew = document.getElementById('ew');
@@ -122,18 +125,30 @@
                   var ewimg = document.getElementById("ew-img");
                   switch (type) {
                     case "晴":
-                      ewimg.style.backgroundPosition = "80px 370px";
+                      ewimg.style.backgroundPosition = "60px 40px";
                       break;
                     case "多云":
                     case "阴":
-                      ewimg.style.backgroundPosition = "-90px 173px";
+                      ewimg.style.backgroundPosition = "-130px -170px";
                       break;
                     case "小雨":
                     case "阵雨":
-                      ewimg.style.backgroundPosition = "-90px 370px";
+                      ewimg.style.backgroundPosition = "-130px 40px";
+                      break;
+                    case "雷雨":
+                      ewimg.style.backgroundPosition = "-310px 40px";
+                      break;
+                    case "大风":
+                      ewimg.style.backgroundPosition = "60px －170px";
+                      break;
+                    case "大雾":
+                      ewimg.style.backgroundPosition = "-310px －170px";
+                      break;
+                    case "有雪":
+                      ewimg.style.backgroundPosition = "-490px －170px";
                       break;
                     default:
-                      ewimg.style.backgroundPosition = "80px 370px";
+                      ewimg.style.backgroundPosition = "60px 40px";
                   }
                   ewinfo.childNodes[1].innerHTML = tempdata.wendu + "&#176";
                   ewinfo.childNodes[2].innerHTML = city;
