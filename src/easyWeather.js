@@ -100,10 +100,9 @@
                           "#ew-img{" +
                           "width:130px;height: 130px;" +
                           "background-image: url('./icon.gif');" +
-                          "background-size: 65%;" +
-                          "background-attachment: fixed;" +
+                          "background-size: 580%;" +
                           "background-repeat: no-repeat;" +
-                          "background-position: -490px 130px;" +
+                          "background-position: 13% 33%;" +
                           "float: right;" +
                           "right: 15px;" +
                           "position: absolute;" +
@@ -123,33 +122,33 @@
                   tempdata = JSON.parse(xhr.responseText).data;
                   var type = tempdata.forecast[0].type;
                   var ewimg = document.getElementById("ew-img");
-                  // switch (type) {
-                  //   case "晴":
-                  //     ewimg.style.backgroundPosition = "60px 340px";
-                  //     break;
-                  //   case "多云":
-                  //   case "阴":
-                  //     ewimg.style.backgroundPosition = "-130px 130px";
-                  //     break;
-                  //   case "小雨":
-                  //   case "阵雨":
-                  //     ewimg.style.backgroundPosition = "-130px 340px";
-                  //     break;
-                  //   case "雷雨":
-                  //     ewimg.style.backgroundPosition = "-300px 340px";
-                  //     break;
-                  //   case "大风":
-                  //     ewimg.style.backgroundPosition = "60px 120px";
-                  //     break;
-                  //   case "大雾":
-                  //     ewimg.style.backgroundPosition = "-300px 130px";
-                  //     break;
-                  //   case "有雪":
-                  //     ewimg.style.backgroundPosition = "-490px 130px";
-                  //     break;
-                  //   default:
-                  //     ewimg.style.backgroundPosition = "60px 340px";
-                  // }
+                  switch (type) {
+                    case "晴":
+                      ewimg.style.backgroundPosition = "13% 33%";
+                      break;
+                    case "多云":
+                    case "阴":
+                      ewimg.style.backgroundPosition = "39% 73%";
+                      break;
+                    case "小雨":
+                    case "阵雨":
+                      ewimg.style.backgroundPosition = "38% 33%";
+                      break;
+                    case "雷雨":
+                      ewimg.style.backgroundPosition = "60% 33%";
+                      break;
+                    case "大风":
+                      ewimg.style.backgroundPosition = "13% 73%";
+                      break;
+                    case "大雾":
+                      ewimg.style.backgroundPosition = "60% 73%";
+                      break;
+                    case "有雪":
+                      ewimg.style.backgroundPosition = "84% 73%";
+                      break;
+                    default:
+                      ewimg.style.backgroundPosition = "13% 33%";
+                  }
                   ewinfo.childNodes[1].innerHTML = tempdata.wendu + "&#176";
                   ewinfo.childNodes[2].innerHTML = city;
                 }
