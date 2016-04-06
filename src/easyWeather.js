@@ -133,6 +133,7 @@
                       break;
                     case "小雨":
                     case "阵雨":
+                    case "大雨":
                       ewimg.style.backgroundPosition = "38% 33%";
                       break;
                     case "雷雨":
